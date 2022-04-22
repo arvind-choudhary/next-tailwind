@@ -1,15 +1,18 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
-import apiRequest from '../axios/axios.init';
+import apiRequest from '../../axios/axios.init';
 
-const Layoutcomponent = ({ children }) => {
+const GeneralLayout = ({ children }) => {
 
     apiRequest({ url: '/geye'})
 
     return (
         <div>
             <main>
+                <div>
+                    General
+                </div>
                 <ToastContainer />
                 {React.isValidElement(children) && children}
             </main>
@@ -18,9 +21,9 @@ const Layoutcomponent = ({ children }) => {
 };
 
 
-Layoutcomponent.propTypes = {
+GeneralLayout.propTypes = {
     children: PropTypes.element
 };
 
 
-export default Layoutcomponent;
+export default GeneralLayout;
