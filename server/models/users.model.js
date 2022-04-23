@@ -28,10 +28,9 @@ const userSchema = new Schema({
         required: [true, 'Field is required'],
     },
 
-    roles: [
-        {
-
-        }
-    ]
+    password: {
+        type: String,
+        required: [true, 'Field is required'],
+    }
 
 }, { timestamps: true })

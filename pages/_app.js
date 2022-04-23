@@ -1,6 +1,6 @@
 import GeneralLayout from '../components/Layouts/GeneralLayout';
 import { SessionProvider } from "next-auth/react"
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import toastConfig from "../configs/toast.config.json"
 

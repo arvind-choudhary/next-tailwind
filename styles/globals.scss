@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+
+    --btn-border-radius: 2px;
+    --btn-border-width: 1px;
+    --btn-border-style: solid;
+    --btn-padding: 4px 6px;
+    --btn-text-primary: #42a5f5;
+    --btn-text-secondary: #ab47bc;
+    --btn-text-error: #d32f2f;
+    --btn-text-info: #0288d1;
+    --btn-text-success: #388e3c;
+    --btn-border-color-primary: #9cd2ff;
+    --btn-border-color-secondary: #dd97ea;
+    --btn-border-color-error: #e48282;
+    --btn-border-color-info: #9fcfea;
+    --btn-border-color-success: #c3f1c5;
+
+}

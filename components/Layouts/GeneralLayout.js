@@ -5,8 +5,6 @@ import apiRequest from '../../axios/axios.init';
 
 const GeneralLayout = ({ children }) => {
 
-    apiRequest({ url: '/geye'})
-
     return (
         <div>
             <main>
