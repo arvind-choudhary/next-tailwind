@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --btn-border-radius: 2px;
+    --btn-border-width: 1px;
+    --btn-border-type: solid;
+    --btn-padding: 2px;
+    --btn-primary: #42a5f5;
+    --btn-secondary: #ab47bc;
+    --btn-error: #d32f2f;
+    --btn-info: #0288d1;
+    --btn-success: #388e3c;
+    --btn-border-primary: #9cd2ff;
+    --btn-border-secondary: #dd97ea;
+    --btn-border-error: #e48282;
+    --btn-border-info: #9fcfea;
+    --btn-border-success: #c3f1c5;
+}

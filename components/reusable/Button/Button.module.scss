@@ -1,0 +1,38 @@
+$btn-padding: var(--btn-padding) !default;
+$btn-padding: var(--btn-padding) !default;
+$btn-padding: var(--btn-padding) !default;
+
+$btn-border-width: var(--btn-border-width) !default;
+$btn-border-style: var(--btn-border-style) !default;
+$btn-border-radius: var(--btn-border-radius) !default;
+
+$btn-text-color: var(--btn-text-primary) !default;
+$btn-text-font-family: var(--btn-text-primary) !default;
+$btn-text-font-size: var(--btn-text-font-size) !default;
+
+@mixin overidePropsByType {
+    color: $btn-border-text-color;
+    font-family: $btn-border-text-font-family;
+    font-size: $btn-border-text-font-size;
+}
+
+.btn {
+
+    padding: $btn-common-padding;
+    border-width: $btn-border-width;
+    border-radius: $btn-border-radius;
+    border-style: $btn-border-style;
+    font-family: $btn-text-font-family;
+    font-size: $btn-text-font-size;
+    
+    &.primary {
+        @include overidePropsByType()
+    }
+
+    &.secondary {
+        $btn-border-text-color: --btn-border-text-secondary;
+        $btn-border-text-font-family: --btn-border-text-secondary;
+        $btn-border-text-font-size: --btn-border-text-secondary;
+    }
+
+}
