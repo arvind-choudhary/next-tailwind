@@ -11,36 +11,31 @@ $btn-text-font-size: var(--btn-text-font-size) !default;
 
 .btn {
 
-    padding: $btn-padding;
-    border-width: $btn-border-width;
-    border-radius: $btn-border-radius;
-    border-style: $btn-border-style;
-    font-family: $btn-text-font-family;
-    font-size: $btn-text-font-size;
+    padding: var(--btn-padding);
+    border-width: var(--btn-border-width);
+    border-radius: var(--btn-border-radius);
+    border-style: var(--btn-border-style);
+    font-family: var(--btn-text-primary);
+    font-size: var(--btn-text-font-size);
     
     &.primary {
-        $btn-text-color: var(--btn-text-primary);
-        color: $btn-text-color;
+        color: var(--btn-text-primary);
     }
 
     &.secondary {
-        $btn-text-color: var(--btn-text-secondary);
-        color: $btn-text-color;
+        color: var(--btn-text-secondary);
     }
 
     &.error {
-        $btn-text-color: var(--btn-text-error);
-        color: $btn-text-color;
+        color:  var(--btn-text-error);
     }
 
     &.info {
-        $btn-text-color: var(--btn-text-info);
-        color: $btn-text-color;
+        color: var(--btn-text-info);
     }
 
     &.success {
-        $btn-text-color: var(--btn-text-success);
-        color: $btn-text-color;
+        color: var(--btn-text-success);
     }
 
 }

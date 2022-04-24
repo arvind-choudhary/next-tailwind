@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { mongoose } from "../mongo/mongo.init";
 
 const { Schema, model } = mongoose;
 
@@ -19,6 +19,7 @@ const userSchema = new Schema({
     email: {
         type: String,
         trim: true,
+        unique: true,
         required: [true, 'Field is required']
     },
 
@@ -30,5 +31,5 @@ const userSchema = new Schema({
 
 });
 
-const userModel = model('users', userSchema);
+const userModel =  mongoose.models.users || model('users', userSchema);
 export { userModel }
