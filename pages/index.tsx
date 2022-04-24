@@ -1,13 +1,16 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import AuthComp from '../components/reusable/Auth/AuthComp'
-import Button from '../components/reusable/Button/Button'
+import DB from '../server/mongo/mongo.init'
 
-import styles from '/styles/Home.module.scss';
+export async function getServerSideProps(context) {
+  const isConnected = await DB();
+  return {
+    props: {
+      isConnected: isConnected ?? null
+    }
+  }
+}
 
 export default function Home() {
-
-
   return (
     <div>
       <Head>

@@ -28,4 +28,19 @@ $btn-text-font-size: var(--btn-text-font-size) !default;
         color: $btn-text-color;
     }
 
+    &.error {
+        $btn-text-color: var(--btn-text-error);
+        color: $btn-text-color;
+    }
+
+    &.info {
+        $btn-text-color: var(--btn-text-info);
+        color: $btn-text-color;
+    }
+
+    &.success {
+        $btn-text-color: var(--btn-text-success);
+        color: $btn-text-color;
+    }
+
 }

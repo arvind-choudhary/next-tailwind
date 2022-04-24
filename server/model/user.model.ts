@@ -16,21 +16,19 @@ const userSchema = new Schema({
         required: [true, 'Field is required']
     },
 
-    profilePic: {
-        type: String,
-        trim: true,
-        required: [ true, 'Field is required']
-    },
-
     email: {
         type: String,
         trim: true,
-        required: [true, 'Field is required'],
+        required: [true, 'Field is required']
     },
 
     password: {
         type: String,
-        required: [true, 'Field is required'],
+        trim: true,
+        required: [true, 'Field is required']
     }
 
-}, { timestamps: true })
+});
+
+const userModel = model('users', userSchema);
+export { userModel }
