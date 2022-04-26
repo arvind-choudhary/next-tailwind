@@ -1,14 +1,4 @@
 import Head from 'next/head'
-import DB from '../server/mongo/mongo.init'
-
-export async function getServerSideProps(context) {
-  const isConnected = await DB();
-  return {
-    props: {
-      isConnected: isConnected ?? null
-    }
-  }
-}
 
 export default function Home() {
   return (

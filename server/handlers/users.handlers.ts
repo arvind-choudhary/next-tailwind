@@ -4,7 +4,7 @@ import { ErrorHandler, getErrorByType } from "../utils/error.util";
 
 const getSignupMessages = getErrorByType('signup');
 
-export const createUser = asyncUtil(async (req, res, next) => {
+export const signUpHandler = asyncUtil(async (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
     const isUserExsist = await userModel.findOne({ email }).catch((error) => next(new ErrorHandler({ ...getSignupMessages("404"), statusCode: 404, error })));
 

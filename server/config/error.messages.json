@@ -20,5 +20,11 @@
             "success": false,
             "message": "User already exsist!"
         }
+    },
+    "schemavalidation": {
+        "400": {
+            "success": false,
+            "message": "Bad request"
+        }
     }
 }

@@ -5,15 +5,6 @@ interface Props {
   name: string
 }
 
-export async function getServerSideProps(context) {
-  const isConnected = await DB();
-  return {
-    props: {
-      isConnected: isConnected ?? null
-    }
-  }
-}
-
 function ProductList(props: Props) {
   return (
     <div>product-list</div>
