@@ -26,5 +26,29 @@
             "success": false,
             "message": "Bad request"
         }
+    },
+    "login": {
+        "201": {
+            "success": true,
+            "message": "User logged in successfully."
+        },
+        "400": {
+            "success": false,
+            "message": "Bad request"
+        }
+    },
+    "AUTH": {
+        "401": {
+            "success": false,
+            "message": "User is not authorised!"
+        },
+        "404": {
+            "success": false,
+            "message": "User not found!"
+        },
+        "409": {
+            "success": false,
+            "message": "User already exsist!"
+        }
     }
 }
