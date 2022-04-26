@@ -1,6 +1,4 @@
 import React from 'react'
-import DB from '../server/mongo/mongo.init'
-
 interface Props {
   name: string
 }

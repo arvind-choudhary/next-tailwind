@@ -1,11 +1,12 @@
-import NextAuth from "next-auth";
+import NextAuth, { Awaitable, IncomingRequest, User } from "next-auth";
 import GithubProvider from "next-auth/providers/github"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
-import DB from "../../../server/mongo/mongo.init"
+import clientPromise from "../../../lib/mongodb";
+import CredentialsProvider from "next-auth/providers/credentials"; "next-auth/providers/credentials";
 
 export default NextAuth({
 
-    adapter: MongoDBAdapter(DB),
+    adapter: MongoDBAdapter(clientPromise),
 
     // Configure one or more authentication providers
     providers: [
@@ -18,7 +19,20 @@ export default NextAuth({
             }
         }),
         // ...add more providers here
+        CredentialsProvider({
+            credentials: {
+                username: { label: "email", type: "text", placeholder: "jsmith" },
+                password: { label: "Password", type: "password" }
+            },
+            authorize: function (credentials: Record<keyof C, string>, req: Pick<IncomingRequest, "headers" | "body" | "query" | "method">): Awaitable<Omit<User, "id"> | { id?: string; }> {
+                console.log(credentials)
+            }
+        })
     ],
-    // 
-    secret: "ZLh6V0SfcTqy1448O53o1Ds2KYB3Y63SoRsqPlnvZHI="
+    //
+    secret: "ZLh6V0SfcTqy1448O53o1Ds2KYB3Y63SoRsqPlnvZHI=",
+    //
+    pages: {
+        signIn: '/user/login'
+    }
 })
