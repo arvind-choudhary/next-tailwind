@@ -1,0 +1,27 @@
+@mixin button-mixin {
+    padding: $btnPadding;
+    border-width: $btnBorderWidth;
+    border-radius: $btnBorderRadius;
+    border-style: $btnBorderStyle;
+    font-size: $btnTextFontSize;
+
+    &.primary {
+        color: $btnTextColorPrimary;
+    }
+
+    &.secondary {
+        color: $btnTextColorSecondary;
+    }
+
+    &.error {
+        color: $btnTextColorError;
+    }
+
+    &.info {
+        color: $btnTextColorInfo;
+    }
+
+    &.success {
+        color: $btnTextColorSuccess;
+    }
+}

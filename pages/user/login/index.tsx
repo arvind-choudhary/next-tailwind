@@ -1,45 +1,62 @@
 import React, { useCallback, useState } from 'react'
 import { getProviders, getCsrfToken, useSession, signIn } from "next-auth/react"
+import { CtxOrReq } from 'next-auth/client/_utils';
+import { emailPattern, passwordPattern } from '../../../client/constants/patterns';
+import { useRouter } from 'next/router';
 
+type SignInProps = {
+  csrfToken: string;
+}
 
-export default function SignIn({ csrfToken }) {
+type State = {
+  value: string;
+  isValid: boolean;
+}
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+export default function SignIn({ csrfToken } : SignInProps ) {
 
-    const onSubmit = useCallback(async () => {
-      const resp = await signIn('credentials', { redirect: false, email, password });
-    });
+    const [email, setEmail] = useState<State>({ value: '', isValid: false});
+    const [password, setPassword] = useState<State>({ value: '', isValid: false});
+    const [message, setMessage] = useState("");
+    const router = useRouter();
+
+    const validateEmail = useCallback((e) => {
+      setEmail({ value: e.target.value, isValid: emailPattern.test(e.target.value)});
+    }, []);
+
+    const validatePassword = useCallback((e) => {
+      setPassword({ value: e.target.value, isValid: passwordPattern.test(e.target.value)})
+    }, [])
+
+    const onSubmit = useCallback(async function (e: React.MouseEvent<HTMLButtonElement>) {
+      console.log("inner", email, password);
+      const params = email.isValid && password.isValid ? { email: email?.value, password: password?.value } : {};
+      const resp = await signIn('credentials', { redirect: false, ...params  });
+      // resp?.error ? setMessage(resp.error) : router.push('/');
+    }, []);
+
 
     return (
-      <form method="post" action="/api/auth/callback/credentials">
+      <form >
+        <h1>{JSON.stringify(email)} {JSON.stringify(password)} {message}</h1>
         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
           Username
-          <input name="username" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" value={email.value} onChange={validateEmail} />
         </label>
         <label>
           Password
-          <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" value={password.value} onChange={validatePassword} />
         </label>
-        <button type="submit" onClick={onSubmit}>Sign in</button>
+        <button onClick={onSubmit}>Sign in</button>
       </form>
     )
   }
   
-  export async function getServerSideProps(context) {
-    return {
-      props: {
-        csrfToken: await getCsrfToken(context),
-      },
-    }
+export async function getServerSideProps(context: CtxOrReq) {
+  return {
+    props: {
+      csrfToken: await getCsrfToken(context),
+    },
   }
-
-function callback<T>(callback: any, arg1: () => any, deps: any, DependencyList: any) {
-  throw new Error('Function not implemented.');
-}
-
-
-function deps<T>(callback: any, arg1: () => any, deps: any, DependencyList: any) {
-  throw new Error('Function not implemented.');
 }

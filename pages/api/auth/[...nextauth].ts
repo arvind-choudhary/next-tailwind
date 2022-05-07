@@ -1,7 +1,7 @@
 import NextAuth, { Awaitable, IncomingRequest, User } from "next-auth";
 import GithubProvider from "next-auth/providers/github"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
-import clientPromise from "../../../lib/mongodb";
+import clientPromise from "../../../common/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials"; "next-auth/providers/credentials";
 import { getErrorByType, ErrorHandler } from "../../../server/utils/error.util";
 import { userModel } from "../../../server/model/user.model";
@@ -25,16 +25,19 @@ export default NextAuth({
         }),
         // ...add more providers here
         CredentialsProvider({
+            id: 'credentials',
+            name: 'Credentials',
             credentials: {},
             authorize: async function (credentials: Record<keyof C, string>, req: Pick<IncomingRequest, "headers" | "body" | "query" | "method">): Awaitable<Omit<User, "id"> | { id?: string; }> {
+                console.log("====================", credentials)
                 if (!credentials?.email || !credentials?.password) {
-                    throw new Error('Please enter a valid credentials')
+                    throw new ErrorHandler({...getAuthErrorMessages("400"), statusCode: 400 });
                 }
-                
-                const user = await userModel.findOne({ email: credentials.username });
-
+                // find is user exsist in db
+                const user = await userModel.findOne({ email: credentials.email });
+                // if user not exsist then throw an error
                 if (!user) {
-                    throw new Error('User does not exsist.') 
+                    throw new ErrorHandler({...getAuthErrorMessages("404"), statusCode: 400 });
                 }
 
                 
@@ -48,16 +51,5 @@ export default NextAuth({
     //
     pages: {
         signIn: '/user/login'
-    },
-    logger: {
-        error(code, metadata) {
-          console.error(code, metadata)
-        },
-        warn(code) {
-            console.warn(code)
-        },
-        debug(code, metadata) {
-            console.debug(code, metadata)
-        }
     }
 })

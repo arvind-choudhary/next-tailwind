@@ -1,0 +1,49 @@
+.btn {
+
+    height: var(--btn-height, inherit);
+    width: var(--btn-width, inherit);
+
+    color: var(--btn-text-color-default);
+    background-color: var(--btn-bg-color-default);
+
+    border-top-left-radius: var(--btn-border-top-left-radius);
+    border-top-right-radius: var(--btn-border-top-right-radius);
+    border-bottom-left-radius: var(--btn-border-bottom-left-radius);
+    border-bottom-right-radius: var(--btn-border-bottom-right-radius);
+
+    padding-top: var(--btn-padding-top);
+    padding-left: var(--btn-padding-left);
+    padding-bottom: var(--btn-padding-bottom);
+    padding-right: var(--btn-padding-right);
+
+    &-primary {
+        background-color: var(--btn-bg-color-primary);
+        color: var(--btn-text-color-primary);
+    }
+
+    &-secondary {
+        background-color: var(--btn-bg-color-secondary);
+        color: var(--btn-text-color-secondary);
+    }
+
+    &-error {
+        background-color: var(--btn-bg-color-error);
+        color: var(--btn-text-color-error);
+    }
+
+    &-warning {
+        background-color: var(--btn-bg-color);
+        color: var(--btn-text-color-warning);
+    }
+
+    &-info {
+        background-color: var(--btn-info-bg-color);
+        color: var(--btn-text-color-info);
+    }
+
+    &-success {
+        background-color: var(--btn-success-color);
+        color: var(--btn-text-color-success);
+    }
+
+}

@@ -2,22 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
 
-    --btn-border-radius: 2px;
-    --btn-border-width: 1px;
-    --btn-border-style: solid;
-    --btn-padding: 4px 6px;
-    --btn-text-primary: #42a5f5;
-    --btn-text-secondary: #ab47bc;
-    --btn-text-error: #d32f2f;
-    --btn-text-info: #0288d1;
-    --btn-text-success: #388e3c;
-    --btn-border-color-primary: #9cd2ff;
-    --btn-border-color-secondary: #dd97ea;
-    --btn-border-color-error: #e48282;
-    --btn-border-color-info: #9fcfea;
-    --btn-border-color-success: #c3f1c5;
+    --btn-height: inherit;
+    --btn-width: inhrit;
+    --btn-border-top-left-radius: 5px;
+    --btn-border-top-right-radius: 5px;
+    --btn-border-bottom-left-radius: 25px;
+    --btn-border-bottom-right-radius: 0px;
+    
+    --btn-padding-left: 15px;
+    --btn-padding-right: 15px;
+    --btn-padding-bottom: 10px;
+    --btn-padding-top: 10px;
+    
+    --btn-text-color-default: rgb(59, 59, 59);
+    --btn-text-color-error: #f7f7ff;
+    --btn-text-color-info: #f7f7ff;
+    --btn-text-color-primary: #f7f7ff;
+    --btn-text-color-secondary: #f7f7ff;
+    --btn-text-color-success: #f7f7ff;
+    --btn-text-color-warning: #f7f7ff;
+    
+    --btn-bg-color-default: rgb(247, 247, 247);
+    --btn-bg-color-error: #ef5350;
+    --btn-bg-color-info: #03a9f4;
+    --btn-bg-color-primary: #42a5f5;
+    --btn-bg-color-secondary: #ba68c8;
+    --btn-bg-color-success: #4caf50;
+    --btn-bg-color-warning: #ff9800;
 
 }

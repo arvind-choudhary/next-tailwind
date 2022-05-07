@@ -1,21 +1,32 @@
-import GeneralLayout from '../components/Layouts/GeneralLayout';
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
-import toastConfig from "../configs/toast.config.json"
+import toastConfig from "../common/configs/toast.config.json"
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
-  const getLayout = Component.getLayout || ((page) => <GeneralLayout>{page}</GeneralLayout>);
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout,
+}
 
-  return getLayout(
+export default function MyApp({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return (
     <SessionProvider session={session}>
-      <Component 
-        {...pageProps } 
-        configs={ toastConfig } 
-      />
+     { getLayout(
+          <Component 
+            {...pageProps } 
+            configs={ toastConfig } 
+          />
+        )
+      }
     </SessionProvider>
   )
 }
-
-export default MyApp

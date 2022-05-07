@@ -6,7 +6,7 @@ export default (async function DB () {
         console.log("Connected");
         return;
     }
-    await mongoose.connect(process.env.MONGO_URI).then((value) => { global.dbConnection = value; console.log("Connected 1");}).catch(console.error); 
+    await mongoose.connect(process.env.MONGODB_URI).then((value) => { global.dbConnection = value; console.log("Connected 1");}).catch(console.error); 
 }());
 
 export { mongoose }

@@ -1,0 +1,31 @@
+{
+    "nav": {
+        "logo": {
+            "src": ""   
+        },
+        "items": [
+            {
+                "title": "Movies",
+                "href": "/",
+                "dropdown": [
+                    {
+                        "title": "Popular",
+                        "href": "/movies/popular"                
+                    },
+                    {
+                        "title": "Now playing",
+                        "href": "/movies/now-playing"                
+                    },
+                    {
+                        "title": "Upcoming",
+                        "href": "/movies/upcoming"                
+                    },
+                    {
+                        "title": "Top rated",
+                        "href": "/movies/top-rated"                
+                    }
+                ]
+            }
+        ]
+    }
+}
